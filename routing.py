@@ -1,9 +1,9 @@
 from aiohttp import web, ClientSession
 from aiohttp.web_request import Request
 import multiprocessing
-import docker
+import docker # type: ignore
 import logging
-import paramiko
+import paramiko # type: ignore
 import time
 from typing import List
 import requests
@@ -52,7 +52,6 @@ class RequestHandler:
             requests.post(url=url, data=data, headers=headers)
             end_time = time.time()
 
-            monitor_process(self.worker_nodes)
             monitor_dict[node.node_ip]["response-time"] = end_time - start_time
 
 
